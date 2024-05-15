@@ -1,0 +1,1 @@
+Peter Magdík & Radovan Psotný

@@ -37,7 +37,8 @@ string getAuthors() {
     return "Peter Magdik & Radovan Psotny";
 }
 
-void insertionSort(int arr[], int n) {
+vector<int> insertionSort(vector <int> arr) {
+    int n = arr.size();
     int i, j, key;
     for (i = 1; i < n; i++) {
         key = arr[i];
@@ -49,11 +50,32 @@ void insertionSort(int arr[], int n) {
         }
         arr[j + 1] = key;
     }
+
+    return arr;
+}
+
+void perfTest() {
+    vector<int> array = {7, 2, 5, 1, 3, 4, 0, 87, 95, 45};
+    time_t base = clock();
+    for (int i = 0; i < 50000; i++) {
+        bubbleSort(array);
+    }
+    cout << "Bubble sort: " << clock() - base << " ms" << endl;
+
+    base = clock();
+    for (int i = 0; i < 50000; i++) {
+        selectionSort(array);
+    }
+    cout << "Selection sort: " << clock() - base << " ms" << endl;
+
+    base = clock();
+    for (int i = 0; i < 50000; i++) {
+        insertionSort(array);
+    }
+    cout << "Insertion sort: " << clock() - base << " ms" << endl;
 }
 
 int main() {
-    int arr[] = {2, 5, 7, 1, 3, 4, 0};
-    insertionSort(arr, 7);
-    
+    perfTest();
     return 0;
 }
